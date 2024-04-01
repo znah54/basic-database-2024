@@ -1,27 +1,27 @@
--- Á¶È¸ º¹ÇÕÁ¶°Ç
--- µµ¼­ Áß Ãà±¸¿¡ °üÇÏ°í, °¡°ÝÀÌ 20,000¿ø ÀÌ»óÀÎ Ã¥À» Á¶È¸
+ï»¿-- ì¡°íšŒ ë³µí•©ì¡°ê±´
+-- ë„ì„œ ì¤‘ ì¶•êµ¬ì— ê´€í•˜ê³ , ê°€ê²©ì´ 20,000ì› ì´ìƒì¸ ì±…ì„ ì¡°íšŒ
 SELECT bookid
      , bookname
      , publisher
      , price
   FROM Book
- WHERE Bookname LIKE '%Ãà±¸%'
+ WHERE Bookname LIKE '%ì¶•êµ¬%'
    AND price >= 20000;
 
--- ÃâÆÇ»ç°¡ ±Â½ºÆ÷Ã÷ È¤Àº ´ëÇÑ¹Ìµð¾î ÀÎ µµ¼­ °Ë»ö
+-- ì¶œíŒì‚¬ê°€ êµ¿ìŠ¤í¬ì¸  í˜¹ì€ ëŒ€í•œë¯¸ë””ì–´ ì¸ ë„ì„œ ê²€ìƒ‰
 SELECT *
   FROM Book
- WHERE publisher = '±Â½ºÆ÷Ã÷'
-    OR publisher = '´ëÇÑ¹Ìµð¾î';
+ WHERE publisher = 'êµ¿ìŠ¤í¬ì¸ '
+    OR publisher = 'ëŒ€í•œë¯¸ë””ì–´';
 
--- Á¤·Ä
--- ±âº»ÀûÀ¸·Î ASC(ending : ¿À¸§Â÷¼ø) »ý·«°¡´É
--- DESC(ending : ³»¸²Â÷¼ø) »ý·«ºÒ°¡
+-- ì •ë ¬
+-- ê¸°ë³¸ì ìœ¼ë¡œ ASC(ending : ì˜¤ë¦„ì°¨ìˆœ) ìƒëžµê°€ëŠ¥
+-- DESC(ending : ë‚´ë¦¼ì°¨ìˆœ) ìƒëžµë¶ˆê°€
 SELECT *
   FROM Book
  ORDER BY bookname;
 
--- µµ¼­¸¦ °¡°Ý¼øÀ¸·Î °Ë»öÇÏ°í, °¡°ÝÀÌ °°À¸¸é ÀÌ¸§¼øÀ¸·Î °Ë»ö
+-- ë„ì„œë¥¼ ê°€ê²©ìˆœìœ¼ë¡œ ê²€ìƒ‰í•˜ê³ , ê°€ê²©ì´ ê°™ìœ¼ë©´ ì´ë¦„ìˆœìœ¼ë¡œ ê²€ìƒ‰
 SELECT *
   FROM Book
  ORDER BY price ASC, bookname DESC;
@@ -30,12 +30,12 @@ SELECT *
   FROM Book
  ORDER BY price ASC, bookname ASC;
 
--- µµ¼­ °¡°ÝÀº ³»¸²Â÷¼ø, Ã¥ÃâÆÇ»ç´Â ¿À¸§Â÷¼øÀ¸·Î °Ë»ö
+-- ë„ì„œ ê°€ê²©ì€ ë‚´ë¦¼ì°¨ìˆœ, ì±…ì¶œíŒì‚¬ëŠ” ì˜¤ë¦„ì°¨ìˆœìœ¼ë¡œ ê²€ìƒ‰
 SELECT *
   FROM Book
  ORDER BY price DESC, publisher ASC;
 
--- ÃÖ±Ù¿¡ µî·ÏµÈ Ã¥ºÎÅÍ ¿À·¡µÈ Ã¥¼øÀ¸·Î °Ë»ö
+-- ìµœê·¼ì— ë“±ë¡ëœ ì±…ë¶€í„° ì˜¤ëž˜ëœ ì±…ìˆœìœ¼ë¡œ ê²€ìƒ‰
 SELECT *
   FROM Book
  ORDER BY bookid DESC;

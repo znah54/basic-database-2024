@@ -14,7 +14,7 @@ SELECT sum(saleprice) AS '김연아고객 총판매액'
 
 -- COUNT()는 *을 사용할 수 있음.
 -- 나머지 집계합수는 열(컬럼) 하나만 지정해서 사용할 것
-SELECT COUNT(saleprice) AS [주문개수]  0
+SELECT COUNT(saleprice) AS [주문개수]  
 	  ,SUM(saleprice) AS[총 판매액]
 	  ,AVG(saleprice) AS[판매액 평균]
 	  ,MIN(saleprice) AS[주문도서 최소금액]

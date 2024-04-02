@@ -30,7 +30,22 @@ SELECT c.[name], b.bookname
  ORDER BY c.[name] ASC;
 
 -- 5. 도서의 가격(Book테이블)과 판매가격(Orders테이블)의 차이가 가장 많은 주문
-SELECT *
+SELECT TOP 1 o.orderid --1 
+           , o.saleprice --2
+           , b.price --3
+        , (b.price - o.saleprice) AS '금액차' --4
   FROM Orders AS o, Book AS b
  WHERE o.bookid = b.bookid
+ -- ORDER BY (b.price - o.salesprice) DESC;
+ ORDER BY 4 DESC;
+
 -- 6. 도서 판매액 평균보다 자신의 구매액 평균이 더 높은 고객의 이름
+-- 전체 도서의 판매 평균금액 = 11,800원
+SELECT(SELECT [name] FROM Customer WHERE custid = base.custid) AS '구매고객명'
+     , base.Average
+  FROM(SELECT o.custid
+     , AVG(o.saleprice) AS Average
+       FROM Orders AS o
+       GROUP BY o.custid) AS base
+WHERE base.Average >= (SELECT AVG(saleprice)
+                         FROM Orders)

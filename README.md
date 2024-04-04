@@ -276,6 +276,10 @@ IoT 개발자과정 SQLServer 학습 리포지토리
 
 - 실행화면
 
+    https://github.com/znah54/basic-database-2024/assets/50408406/344c1b36-0058-4a58-8e94-8c5725fe74da
+
+
+
 ## 7일차
 - SQL 고급
     - 트랜잭션

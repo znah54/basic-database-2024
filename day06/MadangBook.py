@@ -85,7 +85,7 @@ class qtApp(QMainWindow):
             if valid == 1: #DB Book테이블에 같은 번호가 이미 존재
                 QMessageBox.warring(self, '저장경고', '이미 같은 번호의 데이터가 존재합니다!!\n 번호를 변경하세요.')
                 return # 함수 탈출
-        
+
         ## 3. 입력검증 후 DB Book테이블에 삽입 시작!
         ## bookid, bookName, publisher, price
         if mode == 'I':
@@ -99,7 +99,7 @@ class qtApp(QMainWindow):
                         WHERE bookid = {bookid}'''
         conn = db.connect(server=servername,user=userid,password=userPass,database=dbName,charset=dbCharset)
         cursor = conn.cursor(as_dict = False) # INSERT는 데이터를 가져오는게 아니라서
-
+        
         try:
             cursor.execute(query)
             conn.commit() # 저장을 확립
@@ -113,7 +113,7 @@ class qtApp(QMainWindow):
             conn.rollback() # 원상복귀
         finally:
             conn.close() # 오류가 나든 안나든, DB는 닫는다. 
-    
+
     def btnDelClicked(self) : # 삭제버튼 클릭
         # 삭제기능
         bookid = self.txtBookid.text()
@@ -145,7 +145,7 @@ class qtApp(QMainWindow):
         
         self.btnReloadClicked() # 삭제 후에도 재조회 해야 함
 
-    
+
     def btnReloadClicked(self) : # 조회버튼 클릭
         IstResult = []
         conn = db.connect(server=servername,user=userid,password=userPass,database=dbName,charset=dbCharset)
@@ -169,7 +169,7 @@ class qtApp(QMainWindow):
 
         # print(IstResult) # tblBooks 테이블위젯에 표시
         self.makeTable(IstResult)
-    
+
     def makeTable(self,data): # tblBooks 위젯을 데이터와 컬럼 생성해주는 함수
         #print(len(data))
         self.tblBooks.setColumnCount(4) # bookid, bookname, publisher, price
@@ -197,7 +197,7 @@ class qtApp(QMainWindow):
         self.tblBooks.setColumnWidth(3,80)  # 가격 컬럼 넓이 
         # 컬럼 더블클릭 금지
         self.tblBooks.setEditTriggers(QAbstractItemView.NoEditTriggers)
-
+    
     def tblBooksSelected(self): # 조회결과 테이블위젯 내용 클릭
         RowIndex = self.tblBooks.currentRow() # 현재 마우스로 선택된 행의 인덱스
         print(RowIndex)
